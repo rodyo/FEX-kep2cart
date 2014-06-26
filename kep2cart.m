@@ -2,9 +2,12 @@ function varargout = kep2cart(varargin)
 % KEP2CART              Convert Kepler elements to Cartesian coordinates
 %
 % USAGE:
+% =================
+%
 %    [x, y, z, dxdt, dydt, dzdt] = KEP2CART(elements, muC, 'M' or 'theta') 
 %    [x, y, z, dxdt, dydt, dzdt] = KEP2CART(a, e, i, Omega, omega, ...
 %                                     M or theta, muC, 'M' or 'theta')
+%
 % or equivalently,
 %    statevec = KEP2CART(elements, muC, 'M' or 'theta') 
 %    statevec = KEP2CART(a, e, i, Omega, omega, ...
@@ -13,7 +16,13 @@ function varargout = kep2cart(varargin)
 % INPUT ARGUMENTS:
 % =================
 %  a, e, i, Omega,   - The kepler elements to convert. Each of these should  
-%  omega, theta or M   have the same number of elements.
+%  omega, theta or M   have the same number of elements. Definitions: 
+%                               a: semi-major axis
+%                               e: eccentricity
+%                               i: inclination
+%                           Omega: right ascention of the ascending node
+%                           omega: argument of pericenter
+%                         theta/M: true/mean anomaly
 %           elements - The following array: [a,e,i,Omega,omega, theta or M].
 %                muC - The standard gravitational parameter of the central
 %                      body.     
@@ -41,7 +50,7 @@ function varargout = kep2cart(varargin)
 %   case of providing each element seperately, the elements may be matrices
 %   of any dimension, as long as the dimensions are equal for each input.
 %
-%   Note that the Mean anomaly [M] is used for the default conversion.
+%   Note that the mean anomaly [M] is used for the default conversion.
 %   Calling KEP2CART(a, e, i, o, O, theta, muC, 'theta') (or its
 %   matrix equaivalent) will use the true nomaly [theta] directly. 
 %
